@@ -26,5 +26,5 @@ System Requirements
 Running the example
 -------------------
 
-        mvn test
+        mvn exec:exec
 
