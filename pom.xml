@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">	
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.jboss.examples.brms</groupId>
+	<artifactId>java-R-example</artifactId>
+	<version>0.1</version>
+
+	<name>JBoss BRMS example: java-R-Example</name>
+	<description>java-R-example: Demonstrates how to execute R code embedded in Java</description>
+
+	<properties>
+		<!-- Explicitly declaring the source encoding eliminates the following 
+		     			message: -->
+		<!-- [WARNING] Using platform encoding (UTF-8 actually) to copy filtered 
+		     			resources, i.e. build is platform dependent! -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<!-- maven-compiler-plugin -->
+		<maven.compiler.target>1.7</maven.compiler.target>
+		<maven.compiler.source>1.7</maven.compiler.source>
+
+		<!-- Ignore test failure because it requires additional setup -->
+		<maven.test.failure.ignore>true</maven.test.failure.ignore>
+
+	</properties>
+
+	<repositories>
+    		<repository>
+        		<id>project.local</id>
+        		<name>project</name>
+        		<url>file:${project.basedir}/repo</url>
+    		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.rosuda</groupId>
+			<artifactId>JRI</artifactId>
+			<version>1.0</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.4.0</version>
+				<configuration>
+			        <executable>java</executable>
+			        <arguments>
+			            <argument>-Djava.library.path=${project.basedir}/src/main/resources</argument>
+			            <argument>-classpath</argument>
+			            <classpath />
+			            <argument>com.jboss.examples.brms.RExecutionTest</argument>
+			        </arguments>
+			    </configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
+
+
