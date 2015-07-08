@@ -15,11 +15,17 @@ System Requirements
  * Compile JRI from sources to get JRI.jar and the native library (libjri.so in Linux)
  * In this example, both the JRI.jar and the native library for Linux x64 are provided
  * Install and configure R
+
 	sudo yum install R
+
 	export R_HOME=/usr/lib64/R/
+
 	sudo R
+
 	> install.packages('rJava')
+
 	> install.packages('HMisc')
+
 	> q()
 
 
